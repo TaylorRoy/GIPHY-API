@@ -20,7 +20,7 @@ $(document).on("click", ".array-button", function() {
         console.log(response.data[0].images.fixed_height);
         //var gifDiv = $("<div>");
         //$(".gif-area").append(gifDiv);
-        var image = $("<img>").attr("src", response.data[0].images.fixed_height.mp4);
+        var image = $("<img>").attr("src", response.data[0].images.downsized.url);
         $(".gif-area").append(image);
         //var pOne = $("<p>").text(JSON.stringify(response));
         //gifDiv.html(pOne);
