@@ -1,37 +1,38 @@
 var array = ["cat", "dog", "bird"];
 
+var image;
 
+$(document).on("click", ".array-button", function () {
 
-$(document).on("click", ".array-button", function() {
+   
+    $(".gif-area").empty();
+    var search = $(this).attr("data-value"); 
+    
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&limit=10&rating=g&api_key=imAxurpr6b0arPCmmTJrtwZ8tg5jaBGY&"
+console.log(array);
 
-    //event.preventDefault();
-    
-    var search = $(this).attr("data-value");
-    //console.log(this);
-    //console.log(search);
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&limit=10&api_key=imAxurpr6b0arPCmmTJrtwZ8tg5jaBGY&"
-    
-    
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response) {
+    }).then(function (response) {
         console.log(response);
-        console.log(response.data[0].images.fixed_height);
-        //var gifDiv = $("<div>");
-        //$(".gif-area").append(gifDiv);
-        var image = $("<img>").attr("src", response.data[0].images.downsized.url);
-        $(".gif-area").append(image);
-        //var pOne = $("<p>").text(JSON.stringify(response));
-        //gifDiv.html(pOne);
-
-      });
+       
+        for (i = 0; i < response.data.length; i++) {
+            
+            image = $("<img>").attr("src", response.data[i].images.fixed_height.url);
+            $(".gif-area").append(image);
+             var gifDiv = $("<div>");
+             $(".gif-area").append(gifDiv);
+             var pOne = $("<p>").text(response.data[i].rating);
+             gifDiv.append(pOne);
+        }
+    });
 });
 
-function addButtons(){
+function addButtons() {
     $(".buttons").empty();
 
-    for (i=0; i < array.length; i++) {
+    for (i = 0; i < array.length; i++) {
         var buttonDiv = $("<button>");
         buttonDiv.addClass("array-button");
         buttonDiv.attr("data-value", array[i])
@@ -41,18 +42,16 @@ function addButtons(){
     }
 };
 
-$("#search-input").on("click", function(event) {
+$("#search-input").on("click", function (event) {
     event.preventDefault();
     // This line grabs the input from the textbox
     var newItem = $(".search-bar").val().trim();
     
-    //replace(' ', '+')
-
     // Adding movie from the textbox to our array
     array.push(newItem);
     console.log(array)
     // Calling renderButtons which handles the processing of our movie array
     addButtons();
-  });
+});
 
 addButtons();
