@@ -26,9 +26,18 @@ $(document).on("click", ".array-button", function () {
         
         //iterating through 10 gif results to have them show up on html dom
         for (i = 0; i < response.data.length; i++) {
+            //add div to hold image and rating divs
+            var gifDiv = $("<div>");
 
-            //
-            image = $("<img>").attr("src", response.data[i].images.fixed_height.url);
+            //add div to hold gif image
+            gifDiv.addClass("gifDiv");
+
+            //set image div to image
+            var image = $("<img>");
+
+            console.log(response);
+            //add div and place image and rating.
+            image.attr("src", response.data[i].images.fixed_height.url);
             image.addClass("gif");
 
             //adds an "active" state to image- meaning it moves.  Can use later to pause gif with "still" state
@@ -38,17 +47,16 @@ $(document).on("click", ".array-button", function () {
             image.attr("data-still", response.data[i].images.fixed_height_still.url);
             image.attr("data-active", response.data[i].images.fixed_height.url);
 
+            //append image(with all the data attr and gif image soure) to gifDiv
+            var gif= gifDiv.append(image);
+
             //adding gif to gif-area on html dom
-            $(".gif-area").append(image);
-            //also adding a div below image for rating text
-            var gifDiv = $("<div>");
-            //adding div to gif-area
-            $(".gif-area").append(gifDiv);
+            $(".gif-area").append(gif);
+            
+            // //setting rating to location of rating in response
+             var rating = $("<p>").text("Rating: " + response.data[i].rating);
 
-            //setting rating to location of rating in response
-            var rating = $("<p>").text(response.data[i].rating);
-
-            //adding gif rating below gif image in html dom
+            // //adding gif rating below gif image in html dom
             gifDiv.append(rating);
         }
     });
@@ -63,7 +71,7 @@ function addButtons() {
 
     for (i = 0; i < array.length; i++) {
         buttonDiv = $("<button>");
-        buttonDiv.addClass("array-button");
+        buttonDiv.addClass("array-button btn btn-outline-dark ");
 
         buttonDiv.attr("data-value", array[i])
         buttonDiv.text(array[i]);
@@ -77,35 +85,37 @@ var newItem;
 
 $("#search-input").on("click", function (event) {
     event.preventDefault();
+    
     // This line grabs the input from the textbox
     newItem = $(".search-bar").val().trim();
 
-    // Adding movie from the textbox to our array
+    // Adding movie from the search field to our array
     array.push(newItem);
     console.log(array)
+
     // Calling renderButtons which handles the processing of our movie array
     addButtons();
 });
 
 
 //this on click handles playing and pausing gifs when they are clicked on.
-var state;
+
 
 $(document).on("click", ".gif", function () {
   
-    state = $(this).attr("data-status");
+   var state = $(this).attr("data-status");
 
     //checking the state of gif.  then switches image source and state
+    //was using $(".gif").attr was changing all gif to clicked gif.
     if (state === "active") {
-        $(".gif").attr("src", $(this).attr("data-still"));
-        $(".gif").attr("data-status", "still");
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-status", "still");
     }
     else {
-        $(".gif").attr("src", $(this).attr("data-active"));
-        $(".gif").attr("data-status", "active");
+        $(this).attr("src", $(this).attr("data-active"));
+        $(this).attr("data-status", "active");
     }
 });
-
 
 //adds buttons to the html dom
 addButtons();

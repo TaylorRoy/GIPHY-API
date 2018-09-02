@@ -1,0 +1,55 @@
+#title-row {
+    border-bottom-width: 3px;
+border-bottom-style: solid;
+margin-bottom: 20px;
+text-align: center;
+border-top-width: 3px;
+border-top-style: solid;
+border-left-width: 3px;
+border-left-style: solid;
+}
+
+.search-area {
+border-left-width: 3px;
+border-left-style: solid;
+bottom: 0px;
+top: 0px;
+padding-top: 11px;
+border-right-width: 3px;
+border-right-style: solid;
+border-top-width: 0px;
+border-top-style: solid;
+align-content: center;
+}
+
+.background-pattern {
+    background-image: url('https://media.giphy.com/media/kMkvWfdwnmHMQ/giphy.gif');
+    background: no-repeat;  
+}
+
+.button-area {
+    margin-bottom: 18px;
+border-bottom-width: 3px;
+border-bottom-style: solid;
+padding-bottom: 18px;
+border-left-width: 0px;
+border-left-style: solid;
+}
+
+button {
+    margin-right: 5px;
+}
+
+.gifDiv {
+    float: left;
+    align-content: center;
+    padding: 5px;
+}
+
+.gif {
+    align-content: center;
+}
+
+p {
+    text-align: center;
+}
