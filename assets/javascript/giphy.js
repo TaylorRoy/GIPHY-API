@@ -14,7 +14,7 @@ $(document).on("click", ".array-button", function () {
 
     //calling giphy api with dynamic search for 10 gifs with g rating
     queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&limit=10&rating=g&api_key=imAxurpr6b0arPCmmTJrtwZ8tg5jaBGY&"
-    
+
     console.log(array);
 
     //ajax call 
@@ -23,7 +23,7 @@ $(document).on("click", ".array-button", function () {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        
+
         //iterating through 10 gif results to have them show up on html dom
         for (i = 0; i < response.data.length; i++) {
             //add div to hold image and rating divs
@@ -42,19 +42,19 @@ $(document).on("click", ".array-button", function () {
 
             //adds an "active" state to image- meaning it moves.  Can use later to pause gif with "still" state
             image.attr("data-status", "active");
-            
+
             //next two line add image sources when data-still or data-active are called. used for pausing and playing gif
             image.attr("data-still", response.data[i].images.fixed_height_still.url);
             image.attr("data-active", response.data[i].images.fixed_height.url);
 
             //append image(with all the data attr and gif image soure) to gifDiv
-            var gif= gifDiv.append(image);
+            var gif = gifDiv.append(image);
 
             //adding gif to gif-area on html dom
             $(".gif-area").append(gif);
-            
+
             // //setting rating to location of rating in response
-             var rating = $("<p>").text("Rating: " + response.data[i].rating);
+            var rating = $("<p>").text("Rating: " + response.data[i].rating);
 
             // //adding gif rating below gif image in html dom
             gifDiv.append(rating);
@@ -86,15 +86,24 @@ var newItem;
 $("#search-input").on("click", function (event) {
     event.preventDefault();
     
+    
     // This line grabs the input from the textbox
     newItem = $(".search-bar").val().trim();
 
-    // Adding movie from the search field to our array
-    array.push(newItem);
-    console.log(array)
+    //condition to keep user from entering same search more than once
+    if (array.includes(newItem)) {
+        alert("You already added a button for " + newItem + ". Try another search")
+        document.getElementById("search-bar").value = "";
+    }
+    else {
+        // Adding movie from the search field to our array
+        array.push(newItem);
+        console.log(array)
 
-    // Calling renderButtons which handles the processing of our movie array
-    addButtons();
+        // Calling addButtons which handles the processing of our movie array
+        addButtons();
+        document.getElementById("search-bar").value = "";
+    }
 });
 
 
@@ -102,8 +111,8 @@ $("#search-input").on("click", function (event) {
 
 
 $(document).on("click", ".gif", function () {
-  
-   var state = $(this).attr("data-status");
+
+    var state = $(this).attr("data-status");
 
     //checking the state of gif.  then switches image source and state
     //was using $(".gif").attr was changing all gif to clicked gif.
@@ -119,3 +128,4 @@ $(document).on("click", ".gif", function () {
 
 //adds buttons to the html dom
 addButtons();
+

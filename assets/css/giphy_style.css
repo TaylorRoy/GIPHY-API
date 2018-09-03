@@ -7,6 +7,13 @@ border-top-width: 3px;
 border-top-style: solid;
 border-left-width: 3px;
 border-left-style: solid;
+background-color: #f4c3ec;
+}
+
+#title {
+    font-family: 'Monoton', cursive;
+    padding-top: 5px;
+    font-size: 50px;
 }
 
 .search-area {
@@ -14,7 +21,7 @@ border-left-width: 3px;
 border-left-style: solid;
 bottom: 0px;
 top: 0px;
-padding-top: 11px;
+padding-top: 23px;
 border-right-width: 3px;
 border-right-style: solid;
 border-top-width: 0px;
@@ -22,9 +29,15 @@ border-top-style: solid;
 align-content: center;
 }
 
+#search-input {
+    background-color: #bafca6;
+    margin-top: -6px;
+}
+
+
+
 .background-pattern {
-    background-image: url('https://media.giphy.com/media/kMkvWfdwnmHMQ/giphy.gif');
-    background: no-repeat;  
+    background-image:url('https://media.giphy.com/media/26ufiA2rBXMnUihBS/giphy.gif');
 }
 
 .button-area {
@@ -38,6 +51,10 @@ border-left-style: solid;
 
 button {
     margin-right: 5px;
+}
+
+.array-button {
+    background-color:#fff987;
 }
 
 .gifDiv {
