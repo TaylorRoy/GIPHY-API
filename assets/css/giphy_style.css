@@ -1,32 +1,39 @@
 #title-row {
     border-bottom-width: 3px;
-border-bottom-style: solid;
-margin-bottom: 20px;
-text-align: center;
-border-top-width: 3px;
-border-top-style: solid;
-border-left-width: 3px;
-border-left-style: solid;
-background-color: #f4c3ec;
+    border-bottom-style: solid;
+    margin-bottom: 20px;
+    text-align: center;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-right-width: 3px;
+    border-right-style: solid;
+    background-color: #f4c3ec;
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 #title {
     font-family: 'Monoton', cursive;
     padding-top: 5px;
+    margin-top: 13px;
+    margin-bottom: 0.5rem;
     font-size: 50px;
 }
 
 .search-area {
-border-left-width: 3px;
-border-left-style: solid;
-bottom: 0px;
-top: 0px;
-padding-top: 23px;
-border-right-width: 3px;
-border-right-style: solid;
-border-top-width: 0px;
-border-top-style: solid;
-align-content: center;
+    bottom: 0px;
+    border-top-width: 0px;
+    border-top-style: solid;
+    align-content: center;
+    margin-top: 31px;
+    margin-bottom: 0.5rem;
+}
+
+#search-bar {
+    margin-bottom: 15px;
 }
 
 #search-input {
@@ -34,19 +41,17 @@ align-content: center;
     margin-top: -6px;
 }
 
-
-
 .background-pattern {
     background-image:url('https://media.giphy.com/media/26ufiA2rBXMnUihBS/giphy.gif');
 }
 
 .button-area {
     margin-bottom: 18px;
-border-bottom-width: 3px;
-border-bottom-style: solid;
-padding-bottom: 18px;
-border-left-width: 0px;
-border-left-style: solid;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    padding-bottom: 18px;
+    border-left-width: 0px;
+    border-left-style: solid;
 }
 
 button {
@@ -55,6 +60,7 @@ button {
 
 .array-button {
     background-color:#fff987;
+    margin-bottom: 5px;
 }
 
 .gifDiv {
@@ -63,10 +69,45 @@ button {
     padding: 5px;
 }
 
+.ten-more {
+    background-color:#bafca6;
+}
+
+.add-ten {
+    display: grid;  
+}
+
 .gif {
     align-content: center;
 }
 
 p {
     text-align: center;
+}
+
+.newFav {
+   float: left;
+}
+
+.favorite-area {
+    top: 10px;
+}
+
+.favorite-title-area {
+    text-align: center;
+    background-color: #f4c3ec;
+    /* border-top-width: 3px;
+    border-top-style: solid; */
+    border-right-width: 3px;
+    border-right-style: solid;
+    /* border-bottom-width: 3px;
+    border-bottom-style: solid; */
+    border-left-width: 3px;
+    border-left-style: solid;
+    margin-bottom: 10px;
+}
+
+.gifFav {
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
