@@ -4,6 +4,7 @@ var favoritesArray = [];
 var image;
 var search;
 var queryURL;
+var offset = 0;
 
 //used to call giphy api when a yellow term button is clicked and display search appropriate gifs that are g rated
 $(document).on("click", ".array-button", function () {
@@ -89,11 +90,13 @@ function tenMoreButton() {
 //to add 10 more gifs when "add ten more" button is clicked.  Notice the ".gif-area" doesn't get cleared
 $(document).on("click", ".ten-more", function () {
 
+    offset+=10;
+
     //updates data-value that is used in api query
     search = $(this).attr("data-search");
 
     //calling giphy api with dynamic search for 10 gifs with g rating
-    queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&limit=20&rating=g&api_key=imAxurpr6b0arPCmmTJrtwZ8tg5jaBGY&"
+    queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&limit=10&offset=" + offset + "&rating=g&api_key=imAxurpr6b0arPCmmTJrtwZ8tg5jaBGY&"
 
     console.log(array);
 
